@@ -39,27 +39,36 @@ def main():
                              "2.Зареєструватися.\n"
                              "3.Вийти.\n"
                              "Введіть ваш вибір:")
+
         if choice_enter == "1":
+
             login = input("Уведіть ваш логін:")
             password = input("Уведіть ваш пароль:")
             condition = check_user(login, password,users_list)
+
             if condition == "admin":
                 print("You are admin!")
+
             elif condition == "user":
                 print("Successful enter!\n"
                       f"Welcome,{login}!")
+                choice = input("1.")
             else:
                 print("Wrong info or user doesnt exists!\n"
                       "Try again!")
 
         elif choice_enter == "2":
+
             login = input("Уведіть ваш логін:")
             password = input("Уведіть ваш пароль:")
             res = check_user(login, password, users_list, reg = True)
+
             if res == "User already exists!":
                 print("User already exists!")
+
             elif res == "Login already exists!":
                 print("Login already exists!")
+
             elif res == "Successeful reg!":
                 users_list = load_users()
                 print("GOOD!")
