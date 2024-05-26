@@ -1,0 +1,3 @@
+nazar,123,1000,admin
+sasha,000,0,user
+nazar,1234,1000,admin
