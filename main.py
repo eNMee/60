@@ -53,7 +53,17 @@ def main():
                       "Try again!")
 
         elif choice_enter == "2":
-            pass
+            login = input("Уведіть ваш логін:")
+            password = input("Уведіть ваш пароль:")
+            res = check_user(login, password, users_list, reg = True)
+            if res == "User already exists!":
+                print("User already exists!")
+            elif res == "Login already exists!":
+                print("Login already exists!")
+            elif res == "Successeful reg!":
+                users_list = load_users()
+                print("GOOD!")
+
         elif choice_enter == "3":
             print("Good Bye!")
             break
