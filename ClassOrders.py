@@ -2,8 +2,6 @@ from LoadOrders import load_user_orders
 
 
 class Order:
-    pass
-
     @staticmethod
     def show_orders(login,orders_list):
         res = load_user_orders(login)

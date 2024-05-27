@@ -12,4 +12,3 @@ def load_users():
             for user in users_list:
                 user[3] = user[3].strip("\n")
     return users_list
-

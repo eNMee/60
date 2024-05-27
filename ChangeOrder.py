@@ -24,6 +24,5 @@ def change_order(all_orders):
 
 
 
-orders = [["nazar","active"]]
 
-change_order(orders)
+
