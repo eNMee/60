@@ -1,0 +1,3 @@
+cola,250ml,30,drink
+fried potato,300gr,50,dish
+tea,300ml,20,drink

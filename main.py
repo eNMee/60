@@ -28,11 +28,18 @@ import os.path
 from os import path
 
 from CheckUser import check_user
+from ClassCart import Cart
+from ClassOrders import Order
+from EditCart import edit_cart
 from LoadMenu import load_menu
+from LoadOrders import load_user_orders
 from LoadUsers import load_users
 from ClassMenu import ShowMenu
 from ClassBalance import Balance
+from SaveBalance import save_balance
 from SaveUsers import save_users
+from UpdateCart import update_cart
+from payment import pay
 
 
 def main():
@@ -59,9 +66,10 @@ def main():
                 wallet = balance
                 cart = []
                 while condition:
+                    user_order_list = load_user_orders(login)
                     menu_list = load_menu()
                     choice = input("1.Меню\n"
-                                   "2.Статус замовлення\n"
+                                   "2.Замовлення\n"
                                    "3.Корзина\n"
                                    "4.Баланс\n"
                                    "5.Вихід\n"
@@ -82,9 +90,33 @@ def main():
                             name = input("Введіть назву страви:")
                             ShowMenu.search_dish(menu_list ,name)
                     elif choice == "2":
-                        pass
+                        choice_order = input("1.Переглянути замовлення.\n"
+                                             "2.Вихід.\n"
+                                             "Введіть ваш вибір:")
+                        if choice_order == "1":
+                            Order.show_orders(login,user_order_list)
+                        elif choice_order == "2":
+                            pass
                     elif choice == "3":
-                        pass
+                        choice_cart = input("1.Проглянути корзину.\n"
+                                            "2.Редагувати корзину.\n"
+                                            "3.Добавити до корзини.\n"
+                                            "4.Оплатити.\n"
+                                            "5.Вихід.\n"
+                                            "Введіть ваш варіант:")
+                        if choice_cart == "1":
+                            Cart.show_cart(cart)
+                        elif choice_cart == "2":
+                            cart = edit_cart()
+                        elif choice_cart == "3":
+                            cart = update_cart(cart,menu_list)
+                        elif choice_cart == "4":
+                            cart_empty,wallet = pay(login,cart,wallet,user_order_list)
+                            cart = cart_empty
+                            Balance.balance_after_pay(login,wallet,users_list)
+                        elif choice_cart == "5":
+                            pass
+
                     elif choice == "4":
                         choice_wallet = input("1.Переглянути баланс.\n"
                                               "2.Поповнити баланс.\n"
@@ -99,7 +131,10 @@ def main():
                             pass
 
                     elif choice =="5":
-                        pass
+                        save_balance(login,wallet)
+                        condition = False
+
+
 
 
             else:

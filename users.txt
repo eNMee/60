@@ -1,3 +1,2 @@
-nazar,123,1000,admin
-sasha,000,0,user
-nazar,1234,1000,admin
+natasha,876,400,user
+nazar,123,99999,admin

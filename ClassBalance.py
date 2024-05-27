@@ -25,4 +25,10 @@ class Balance:
               f"Загальний баланс {balance}")
         return users_list,balance
 
+    @staticmethod
+    def balance_after_pay(login,balance,users_list):
+        for user in users_list:
+            if user[0] == login:
+                user[2] = str(balance)
+        return users_list
 
