@@ -5,10 +5,12 @@ def check_user(login,password,users_list,reg = False):
                 cond = user[3]
                 if cond.rstrip("\n") == "admin" or cond == "admin":
                     current_user = "admin"
-                    return current_user
+                    wallet = user[2]
+                    return current_user, wallet
                 elif cond.rstrip("\n") == "user" or cond == "user":
                     current_user = "user"
-                    return current_user
+                    wallet = user[2]
+                    return current_user, wallet
 
     if reg:
         for user in users_list:

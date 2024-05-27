@@ -1,16 +1,16 @@
 import os.path
 from os import path
 
+
 class Menu:
     pass
-
 
 class ShowMenu:
     def __init__(self,menu_list):
         self.menu_list = menu_list
 
     @staticmethod
-    def show_menu_list(self,menu_list):
+    def show_menu_list(menu_list):
         dish_list = [i for i in menu_list if i[3] == "dish"]
         drinks_list = [i for i in menu_list if i[3] == "drink"]
 
@@ -27,7 +27,7 @@ class ShowMenu:
                   f"type:{val[3]}\n")
 
     @staticmethod
-    def show_all_drinks(self, menu_list):
+    def show_all_drinks(menu_list):
         drinks_list = [i for i in menu_list if i[3] == "drink"]
 
         for val in drinks_list:
