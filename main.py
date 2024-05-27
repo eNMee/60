@@ -27,18 +27,22 @@
 import os.path
 from os import path
 
+from ChangeOrder import change_order
 from CheckUser import check_user
 from ClassCart import Cart
 from ClassOrders import Order
+from DeleteMenu import delete_menu
 from EditCart import edit_cart
+from EditMenu import edit_menu
 from LoadMenu import load_menu
-from LoadOrders import load_user_orders
+from LoadOrders import load_user_orders, load_all_users_order
 from LoadUsers import load_users
 from ClassMenu import ShowMenu
 from ClassBalance import Balance
 from SaveBalance import save_balance
 from SaveUsers import save_users
 from UpdateCart import update_cart
+from UpdateMenu import update_menu
 from payment import pay
 
 
@@ -58,7 +62,39 @@ def main():
             condition, balance = check_user(login, password,users_list)
 
             if condition == "admin":
-                print("You are admin!")
+                print("You are admin!\n"
+                      "Welcome!")
+                while condition:
+                    wallet = balance
+                    menu_list = load_menu()
+                    choice = input("1.Переглянути меню.\n"
+                                   "2.Змінити меню.\n"
+                                   "3.Змінити статус замовлення.\n"
+                                   "4.Вихід.\n"
+                                   "Введіть ваш вибір:")
+
+                    if choice == "1":
+                        ShowMenu.show_menu_list(menu_list)
+                    elif choice == "2":
+                        choice_menu = input("1.Додати блюдо.\n"
+                                            "2.Редагувати блюдо.\n"
+                                            "3.Видалити блюдо.\n"
+                                            "4.Вихід.\n"
+                                            "Введіть ваш вибір:\n")
+                        if choice_menu == "1":
+                            update_menu(menu_list)
+                        elif choice_menu == "2":
+                            edit_menu(menu_list)
+                        elif choice_menu == "3":
+                            delete_menu(menu_list)
+                        elif choice_menu == "4":
+                            pass
+
+                    elif choice == "3":
+                        all_orders=load_all_users_order()
+                        change_order(all_orders)
+                    elif choice == "4":
+                        condition = False
 
             elif condition == "user":
                 print("Successful enter!\n"

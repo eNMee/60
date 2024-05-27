@@ -1,2 +1,3 @@
 natasha,876,400,user
 nazar,123,99999,admin
+sasha,1234,0,user

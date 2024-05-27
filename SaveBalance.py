@@ -12,10 +12,10 @@ def save_balance(login, wallet):
         string_line = ""
         for info in range(0, len(o)):
             if info == len(o) - 1:
-                string_line += o[info]+"\n"
+                string_line += o[info]
             else:
                 string_line += str(o[info]) + ","
         new_users_list.append(string_line)
 
-    with open("orders.txt", "w") as f:
+    with open("users.txt", "w") as f:
         f.writelines(new_users_list)

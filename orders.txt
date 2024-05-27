@@ -1,3 +1,1 @@
-natasha,876,400,user
-
-nazar,123,99999,admin
+nazar,inactive

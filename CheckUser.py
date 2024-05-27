@@ -13,27 +13,33 @@ def check_user(login,password,users_list,reg = False):
                     return current_user, wallet
 
     if reg:
-        for user in users_list:
-            if user[0] == login and user[1] == password:
-                reg = None
-                return "User already exists!"
-            elif user[0] == login:
-                return "Login already exists!"
-            else:
-                u1 = login, password, "0", "user"
-                users_list.append(u1)
-                new_info = []
-                for u in users_list:
-                    string_line = ""
-                    for word in range(0,len(u)):
-                        if word == len(u) - 1:
-                            string_line += u[word]
-                        else:
-                            string_line += u[word] + ","
-                    new_info.append(string_line)
-                with open("users.txt", "w") as f:
-                    f.writelines(new_info)
-                    return "Successeful reg!"
+        sovpadenie = "0"
+        counter = 0
+        while sovpadenie == "0" and counter < len(users_list):
+            counter = 0
+            for user in users_list:
+                if user[0] == login:
+                    sovpadenie = "1"
+                counter += 1
+        if sovpadenie == "0":
+            u1 = login, password, "0", "user"
+            users_list.append(u1)
+            new_info = []
+            for u in users_list:
+                string_line = ""
+                for word in range(0,len(u)):
+                    if word == len(u) - 1:
+                        string_line += u[word] + "\n"
+                    else:
+                        string_line += u[word] + ","
+                new_info.append(string_line)
+
+            with open("users.txt", "w") as f:
+                f.writelines(new_info)
+                return "Successeful reg!"
+
+        elif sovpadenie == "1":
+            print("User already exists")
 
 
 
